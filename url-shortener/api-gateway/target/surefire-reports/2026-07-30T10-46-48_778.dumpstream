@@ -1,5 +1,0 @@
-# Created at 2026-07-30T10:46:49.186
-Boot Manifest-JAR contains absolute paths in classpath 'D:\PST PRoject\Vamsi\URLShortner\url-shortener\api-gateway\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

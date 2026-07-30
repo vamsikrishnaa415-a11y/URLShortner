@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Orchestrator Service",
+      "request": "launch",
+      "mainClass": "com.example.urlshortener.orchestratorservice.OrchestratorServiceApplication",
+      "projectName": "orchestrator-service"
+    },
+    {
+      "type": "java",
+      "name": "Run URL Service",
+      "request": "launch",
+      "mainClass": "com.example.urlshortener.urlservice.UrlServiceApplication",
+      "projectName": "url-service"
+    },
+    {
+      "type": "java",
+      "name": "Run Analytics Service",
+      "request": "launch",
+      "mainClass": "com.example.urlshortener.analyticsservice.AnalyticsServiceApplication",
+      "projectName": "analytics-service"
+    },
+    {
+      "type": "java",
+      "name": "Run API Gateway",
+      "request": "launch",
+      "mainClass": "com.example.urlshortener.apigateway.ApiGatewayApplication",
+      "projectName": "api-gateway"
+    }
+  ]
+}

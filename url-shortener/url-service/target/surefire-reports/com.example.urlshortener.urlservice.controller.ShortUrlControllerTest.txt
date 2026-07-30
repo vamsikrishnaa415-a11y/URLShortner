@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.urlshortener.urlservice.controller.ShortUrlControllerTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.51 s -- in com.example.urlshortener.urlservice.controller.ShortUrlControllerTest
