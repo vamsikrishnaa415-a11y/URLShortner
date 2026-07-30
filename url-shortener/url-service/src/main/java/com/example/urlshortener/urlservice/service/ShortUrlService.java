@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.urlshortener.urlservice.dto.ShortUrlRequestDto;
+import com.example.urlshortener.urlservice.dto.RedirectMetadataDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlResponseDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlUpdateRequestDto;
 import com.example.urlshortener.urlservice.entity.ShortUrl;
@@ -27,14 +28,17 @@ public class ShortUrlService {
     private final ShortUrlRepository shortUrlRepository;
     private final ShortUrlMapper shortUrlMapper;
     private final ShortCodeGenerator shortCodeGenerator;
+    private final AnalyticsTrackingService analyticsTrackingService;
 
     public ShortUrlService(
             ShortUrlRepository shortUrlRepository,
             ShortUrlMapper shortUrlMapper,
-            ShortCodeGenerator shortCodeGenerator) {
+            ShortCodeGenerator shortCodeGenerator,
+            AnalyticsTrackingService analyticsTrackingService) {
         this.shortUrlRepository = shortUrlRepository;
         this.shortUrlMapper = shortUrlMapper;
         this.shortCodeGenerator = shortCodeGenerator;
+        this.analyticsTrackingService = analyticsTrackingService;
     }
 
     @Transactional
@@ -107,6 +111,11 @@ public class ShortUrlService {
 
     @Transactional
     public URI resolveRedirect(String shortCode) {
+        return resolveRedirect(shortCode, null);
+    }
+
+    @Transactional
+    public URI resolveRedirect(String shortCode, RedirectMetadataDto metadata) {
         ShortUrl entity = shortUrlRepository.findByShortCodeAndActiveTrue(shortCode)
                 .or(() -> shortUrlRepository.findByCustomAliasAndActiveTrue(shortCode))
                 .orElseThrow(() -> new ResourceNotFoundException("Short URL not found for code: " + shortCode));
@@ -121,6 +130,8 @@ public class ShortUrlService {
 
         entity.setClickCount(entity.getClickCount() + 1);
         shortUrlRepository.save(entity);
+
+        analyticsTrackingService.trackRedirect(entity.getShortCode(), metadata);
 
         return URI.create(entity.getOriginalUrl());
     }

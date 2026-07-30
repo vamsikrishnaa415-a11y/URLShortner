@@ -16,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.example.urlshortener.urlservice.dto.ShortUrlRequestDto;
+import com.example.urlshortener.urlservice.dto.RedirectMetadataDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlUpdateRequestDto;
 import com.example.urlshortener.urlservice.entity.ShortUrl;
 import com.example.urlshortener.urlservice.exception.ConflictException;
@@ -36,6 +37,9 @@ class ShortUrlServiceTest {
 
     @Mock
     private ShortCodeGenerator shortCodeGenerator;
+
+    @Mock
+    private AnalyticsTrackingService analyticsTrackingService;
 
     @InjectMocks
     private ShortUrlService shortUrlService;
@@ -84,11 +88,12 @@ class ShortUrlServiceTest {
         when(shortUrlRepository.findByShortCodeAndActiveTrue("abc12345")).thenReturn(Optional.of(shortUrl));
         when(shortUrlRepository.save(any(ShortUrl.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        URI uri = shortUrlService.resolveRedirect("abc12345");
+        URI uri = shortUrlService.resolveRedirect("abc12345", new RedirectMetadataDto("127.0.0.1", "Mozilla", null));
 
         assertThat(uri).isEqualTo(URI.create("https://example.com"));
         assertThat(shortUrl.getClickCount()).isEqualTo(3L);
         verify(shortUrlRepository).save(shortUrl);
+        verify(analyticsTrackingService).trackRedirect(any(), any());
     }
 
     @Test
@@ -96,9 +101,11 @@ class ShortUrlServiceTest {
         shortUrl.setExpiryDate(Instant.now().minusSeconds(60));
         when(shortUrlRepository.findByShortCodeAndActiveTrue("abc12345")).thenReturn(Optional.of(shortUrl));
 
-        assertThatThrownBy(() -> shortUrlService.resolveRedirect("abc12345"))
+        assertThatThrownBy(() -> shortUrlService.resolveRedirect("abc12345", null))
                 .isInstanceOf(UrlUnavailableException.class)
                 .hasMessageContaining("expired");
+
+        verify(analyticsTrackingService, never()).trackRedirect(any(), any());
     }
 
     @Test

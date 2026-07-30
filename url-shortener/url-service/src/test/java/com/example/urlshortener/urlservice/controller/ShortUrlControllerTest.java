@@ -1,6 +1,7 @@
 package com.example.urlshortener.urlservice.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -104,7 +105,7 @@ class ShortUrlControllerTest {
 
     @Test
     void shouldRedirectByShortCode() throws Exception {
-        when(shortUrlService.resolveRedirect("abc12345")).thenReturn(URI.create("https://example.com/page"));
+                when(shortUrlService.resolveRedirect(eq("abc12345"), any())).thenReturn(URI.create("https://example.com/page"));
 
         mockMvc.perform(get("/r/abc12345"))
                 .andExpect(status().isFound())

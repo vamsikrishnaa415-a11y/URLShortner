@@ -370,3 +370,43 @@ Traceability matrix:
 3. Use stateless application instances for horizontal scaling.
 4. Enforce controlled autonomy via phase gates and explicit human approval.
 5. Anchor operations on measurable SLO-aligned telemetry.
+
+## 18. Inter-Service Communication (URL to Analytics)
+
+Current synchronous integration design:
+
+1. URL Service calls Analytics Service over REST when redirect is resolved.
+2. Client implementation uses Spring Cloud OpenFeign.
+3. Redirect flow remains available even if analytics call fails.
+
+Communication reliability controls:
+
+1. Timeout policy:
+    - Connect timeout: 2 seconds.
+    - Read timeout: 3 seconds.
+2. Retry policy:
+    - Feign retryer with bounded attempts and backoff.
+3. Fallback policy:
+    - Feign fallback factory provides no-op fallback.
+    - URL redirect path is non-blocking for analytics failures.
+4. Error handling:
+    - Feign error decoder maps downstream non-2xx responses to client exceptions.
+    - URL Service logs failure with correlation context and continues redirect.
+
+```mermaid
+sequenceDiagram
+     participant V as Visitor
+     participant U as URL Service
+     participant A as Analytics Service
+
+     V->>U: GET /r/{shortCode}
+     U->>U: Resolve short code and validate active/expiry
+     U->>A: POST /analytics/events (Feign)
+     alt Analytics call succeeds
+          A-->>U: 201 Created
+     else Timeout/Error
+          A--xU: Exception
+          U->>U: Retry then fallback, log warning
+     end
+     U-->>V: 302 Redirect to original URL
+```

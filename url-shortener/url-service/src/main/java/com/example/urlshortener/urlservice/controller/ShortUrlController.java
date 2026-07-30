@@ -1,6 +1,7 @@
 package com.example.urlshortener.urlservice.controller;
 
 import java.net.URI;
+import jakarta.servlet.http.HttpServletRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.urlshortener.urlservice.dto.ErrorResponse;
+import com.example.urlshortener.urlservice.dto.RedirectMetadataDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlRequestDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlResponseDto;
 import com.example.urlshortener.urlservice.dto.ShortUrlUpdateRequestDto;
@@ -97,8 +99,14 @@ public class ShortUrlController {
     })
     @GetMapping("/r/{shortCode}")
     public ResponseEntity<Void> redirect(
-            @PathVariable @NotBlank @Size(min = 4, max = 64) String shortCode) {
-        URI redirectTo = shortUrlService.resolveRedirect(shortCode);
+                        @PathVariable @NotBlank @Size(min = 4, max = 64) String shortCode,
+                        HttpServletRequest request) {
+                RedirectMetadataDto metadata = new RedirectMetadataDto(
+                                request.getRemoteAddr(),
+                                request.getHeader("User-Agent"),
+                                request.getHeader("Referer"));
+
+                URI redirectTo = shortUrlService.resolveRedirect(shortCode, metadata);
         return ResponseEntity.status(HttpStatus.FOUND)
                 .header(HttpHeaders.LOCATION, redirectTo.toString())
                 .build();
