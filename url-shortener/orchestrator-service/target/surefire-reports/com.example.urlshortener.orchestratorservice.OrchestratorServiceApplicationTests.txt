@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.82 s -- in com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.36 s -- in com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests

@@ -4,12 +4,16 @@ D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\c
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\config\OpenApiConfig.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\config\ValidationConfig.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\controller\HealthController.java
+D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\dto\ClickAnalyticsRequestDto.java
+D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\dto\ClickAnalyticsResponseDto.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\dto\ErrorResponse.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\dto\HealthResponse.java
+D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\entity\ClickAnalytics.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\entity\HealthEntity.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\exception\GlobalExceptionHandler.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\exception\ServiceException.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\mapper\HealthMapper.java
+D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\repository\ClickAnalyticsRepository.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\repository\HealthRepository.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\service\HealthService.java
 D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service\src\main\java\com\example\urlshortener\analyticsservice\util\CorrelationIdUtil.java

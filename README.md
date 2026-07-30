@@ -26,3 +26,8 @@ This repository is being delivered in controlled engineering milestones. Each ap
 ## URL Shortener bootstrap
 
 See [url-shortener/README.md](url-shortener/README.md) for the multi-module Maven bootstrap and service overview.
+
+## Database Entities Milestone
+
+Commit 7 adds the H2-backed JPA database model for URL Service, Analytics Service, and Orchestrator Service.
+Details are documented in [url-shortener/README.md](url-shortener/README.md).

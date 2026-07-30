@@ -34,3 +34,24 @@ From url-shortener/ run:
 - mvn spring-boot:run -pl api-gateway
 
 Each service exposes a health endpoint at /internal/health and Swagger UI at /swagger-ui.html.
+
+## Database Model (Commit 7)
+
+H2-backed JPA data model has been added for core microservices.
+
+- url-service
+	- Entity: ShortUrl (id, originalUrl, shortCode, customAlias, createdAt, expiryDate, active, clickCount)
+	- Repository: ShortUrlRepository
+	- DTOs: ShortUrlRequestDto, ShortUrlResponseDto
+
+- analytics-service
+	- Entity: ClickAnalytics (id, shortCode, clickedAt, ipAddress, browser, device, operatingSystem, referrer)
+	- Repository: ClickAnalyticsRepository
+	- DTOs: ClickAnalyticsRequestDto, ClickAnalyticsResponseDto
+
+- orchestrator-service
+	- Entities: WorkflowExecution, WorkflowState, ApprovalHistory
+	- Repositories: WorkflowExecutionRepository, WorkflowStateRepository, ApprovalHistoryRepository
+	- DTOs: WorkflowExecutionDto, WorkflowStateDto, ApprovalHistoryDto
+
+Repository unit tests are included for these new repositories.

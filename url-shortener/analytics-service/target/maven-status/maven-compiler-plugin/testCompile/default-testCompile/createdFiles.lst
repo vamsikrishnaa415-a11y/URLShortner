@@ -1,1 +1,2 @@
 com\example\urlshortener\analyticsservice\AnalyticsServiceApplicationTests.class
+com\example\urlshortener\analyticsservice\repository\ClickAnalyticsRepositoryTest.class
