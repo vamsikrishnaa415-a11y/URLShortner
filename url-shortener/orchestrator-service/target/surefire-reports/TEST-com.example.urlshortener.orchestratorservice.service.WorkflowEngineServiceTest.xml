@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests" time="13.933" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest" time="4.686" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -47,7 +47,7 @@
     <property name="localRepository" value="C:\Users\abhis\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="C:\Users\abhis\AppData\Local\Temp\"/>
-    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="2"/>
     <property name="java.version" value="17.0.19"/>
     <property name="user.dir" value="D:\PST PRoject\Vamsi\URLShortner\url-shortener\orchestrator-service"/>
     <property name="os.arch" value="amd64"/>
@@ -65,9 +65,9 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[orchestrator-service] "/>
   </properties>
-  <testcase name="contextLoads" classname="com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests" time="0.008">
-    <system-out><![CDATA[2026-07-30 12:22:23 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - no-correlation-id - Could not detect default configuration classes for test class [com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests]: OrchestratorServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-07-30 12:22:23 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - no-correlation-id - Found @SpringBootConfiguration com.example.urlshortener.orchestratorservice.OrchestratorServiceApplication for test class com.example.urlshortener.orchestratorservice.OrchestratorServiceApplicationTests
+  <testcase name="shouldApproveWorkflow" classname="com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest" time="0.73">
+    <system-out><![CDATA[2026-07-30 12:22:39 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - no-correlation-id - Could not detect default configuration classes for test class [com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest]: WorkflowEngineServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-30 12:22:39 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - no-correlation-id - Found @SpringBootConfiguration com.example.urlshortener.orchestratorservice.OrchestratorServiceApplication for test class com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,23 +78,25 @@
 
  :: Spring Boot ::                (v3.3.2)
 
-2026-07-30 12:22:23 [main] INFO  c.e.u.o.OrchestratorServiceApplicationTests - no-correlation-id - Starting OrchestratorServiceApplicationTests using Java 17.0.19 with PID 28820 (started by abhis in D:\PST PRoject\Vamsi\URLShortner\url-shortener\orchestrator-service)
-2026-07-30 12:22:23 [main] INFO  c.e.u.o.OrchestratorServiceApplicationTests - no-correlation-id - No active profile set, falling back to 1 default profile: "default"
-2026-07-30 12:22:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-30 12:22:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Finished Spring Data repository scanning in 160 ms. Found 5 JPA repository interfaces.
-2026-07-30 12:22:27 [main] INFO  o.h.jpa.internal.util.LogHelper - no-correlation-id - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-07-30 12:22:28 [main] INFO  org.hibernate.Version - no-correlation-id - HHH000412: Hibernate ORM core version 6.5.2.Final
-2026-07-30 12:22:28 [main] INFO  o.h.c.i.RegionFactoryInitiator - no-correlation-id - HHH000026: Second-level cache disabled
-2026-07-30 12:22:28 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - no-correlation-id - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-30 12:22:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - no-correlation-id - HikariPool-1 - Starting...
-2026-07-30 12:22:29 [main] INFO  com.zaxxer.hikari.pool.HikariPool - no-correlation-id - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:orchestrator-service user=SA
-2026-07-30 12:22:29 [main] INFO  com.zaxxer.hikari.HikariDataSource - no-correlation-id - HikariPool-1 - Start completed.
-2026-07-30 12:22:29 [main] WARN  org.hibernate.orm.deprecation - no-correlation-id - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-07-30 12:22:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - no-correlation-id - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-07-30 12:22:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - no-correlation-id - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-30 12:22:34 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - no-correlation-id - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-07-30 12:22:36 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - no-correlation-id - Exposing 1 endpoint beneath base path '/actuator'
-2026-07-30 12:22:36 [main] INFO  c.e.u.o.OrchestratorServiceApplicationTests - no-correlation-id - Started OrchestratorServiceApplicationTests in 13.654 seconds (process running for 26.48)
+2026-07-30 12:22:39 [main] INFO  c.e.u.o.s.WorkflowEngineServiceTest - no-correlation-id - Starting WorkflowEngineServiceTest using Java 17.0.19 with PID 28820 (started by abhis in D:\PST PRoject\Vamsi\URLShortner\url-shortener\orchestrator-service)
+2026-07-30 12:22:39 [main] INFO  c.e.u.o.s.WorkflowEngineServiceTest - no-correlation-id - No active profile set, falling back to 1 default profile: "default"
+2026-07-30 12:22:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-30 12:22:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Finished Spring Data repository scanning in 37 ms. Found 5 JPA repository interfaces.
+2026-07-30 12:22:40 [main] INFO  o.h.jpa.internal.util.LogHelper - no-correlation-id - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-30 12:22:40 [main] INFO  o.h.c.i.RegionFactoryInitiator - no-correlation-id - HHH000026: Second-level cache disabled
+2026-07-30 12:22:40 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - no-correlation-id - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-30 12:22:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - no-correlation-id - HikariPool-2 - Starting...
+2026-07-30 12:22:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - no-correlation-id - HikariPool-2 - Added connection conn17: url=jdbc:h2:mem:orchestrator-service user=SA
+2026-07-30 12:22:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - no-correlation-id - HikariPool-2 - Start completed.
+2026-07-30 12:22:40 [main] WARN  org.hibernate.orm.deprecation - no-correlation-id - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-30 12:22:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - no-correlation-id - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-30 12:22:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - no-correlation-id - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-30 12:22:41 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - no-correlation-id - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-30 12:22:42 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - no-correlation-id - Exposing 1 endpoint beneath base path '/actuator'
+2026-07-30 12:22:42 [main] INFO  c.e.u.o.s.WorkflowEngineServiceTest - no-correlation-id - Started WorkflowEngineServiceTest in 3.05 seconds (process running for 32.138)
 ]]></system-out>
   </testcase>
+  <testcase name="shouldStartWorkflowAndReachApprovalGate" classname="com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest" time="0.286"/>
+  <testcase name="shouldReplanOnRejectAndRetryToApprovalGate" classname="com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest" time="0.398"/>
+  <testcase name="shouldRollbackWorkflow" classname="com.example.urlshortener.orchestratorservice.service.WorkflowEngineServiceTest" time="0.177"/>
 </testsuite>
