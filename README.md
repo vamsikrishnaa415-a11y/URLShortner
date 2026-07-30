@@ -23,3 +23,6 @@ This repository is being delivered in controlled engineering milestones. Each ap
 ## Phase Artifacts
 
 - Phase 1: [docs/phase-01-requirement-understanding.md](docs/phase-01-requirement-understanding.md)
+## URL Shortener bootstrap
+
+See [url-shortener/README.md](url-shortener/README.md) for the multi-module Maven bootstrap and service overview.

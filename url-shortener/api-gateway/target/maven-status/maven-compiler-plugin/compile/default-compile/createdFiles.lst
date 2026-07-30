@@ -1,0 +1,17 @@
+com\example\urlshortener\apigateway\exception\GlobalExceptionHandler.class
+com\example\urlshortener\apigateway\service\HealthService.class
+com\example\urlshortener\apigateway\controller\HealthController.class
+com\example\urlshortener\apigateway\repository\HealthRepository.class
+com\example\urlshortener\apigateway\dto\ErrorResponse.class
+com\example\urlshortener\apigateway\config\LoggingConfig$1.class
+com\example\urlshortener\apigateway\ApiGatewayApplication.class
+com\example\urlshortener\apigateway\config\LoggingConfig.class
+com\example\urlshortener\apigateway\validation\ValidationPatterns.class
+com\example\urlshortener\apigateway\entity\HealthEntity.class
+com\example\urlshortener\apigateway\util\CorrelationIdUtil.class
+com\example\urlshortener\apigateway\dto\HealthResponse.class
+com\example\urlshortener\apigateway\mapper\HealthMapper.class
+com\example\urlshortener\apigateway\exception\ServiceException.class
+com\example\urlshortener\apigateway\common\ServiceMetadata.class
+com\example\urlshortener\apigateway\config\OpenApiConfig.class
+com\example\urlshortener\apigateway\config\ValidationConfig.class
