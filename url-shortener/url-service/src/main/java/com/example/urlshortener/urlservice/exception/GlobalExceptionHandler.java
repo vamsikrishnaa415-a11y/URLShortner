@@ -1,6 +1,7 @@
 package com.example.urlshortener.urlservice.exception;
 
 import java.time.Instant;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import com.example.urlshortener.urlservice.dto.ErrorResponse;
 public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     public ResponseEntity<ErrorResponse> handleServiceException(ServiceException ex, HttpServletRequest request) {
-        return buildErrorResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+        return buildErrorResponse(ex.getMessage(), ex.getStatus(), request);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -25,6 +26,11 @@ public class GlobalExceptionHandler {
                 .map(FieldError::getDefaultMessage)
                 .orElse("Validation failed");
         return buildErrorResponse(message, HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<ErrorResponse> handleConstraintViolationException(ConstraintViolationException ex, HttpServletRequest request) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, request);
     }
 
     @ExceptionHandler(Exception.class)

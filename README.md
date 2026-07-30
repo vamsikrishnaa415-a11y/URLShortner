@@ -31,3 +31,8 @@ See [url-shortener/README.md](url-shortener/README.md) for the multi-module Mave
 
 Commit 7 adds the H2-backed JPA database model for URL Service, Analytics Service, and Orchestrator Service.
 Details are documented in [url-shortener/README.md](url-shortener/README.md).
+
+## URL Service APIs Milestone
+
+URL Service CRUD and redirect APIs are implemented in commit `feat: implement url service`.
+See [url-shortener/README.md](url-shortener/README.md) for endpoint and behavior details.

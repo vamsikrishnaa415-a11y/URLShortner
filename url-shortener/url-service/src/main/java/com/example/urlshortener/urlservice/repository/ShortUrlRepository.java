@@ -10,7 +10,11 @@ public interface ShortUrlRepository extends JpaRepository<ShortUrl, Long> {
 
     Optional<ShortUrl> findByShortCodeAndActiveTrue(String shortCode);
 
+    Optional<ShortUrl> findByShortCode(String shortCode);
+
     Optional<ShortUrl> findByCustomAliasAndActiveTrue(String customAlias);
+
+    Optional<ShortUrl> findByCustomAlias(String customAlias);
 
     boolean existsByShortCode(String shortCode);
 

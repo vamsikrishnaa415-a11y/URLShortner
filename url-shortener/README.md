@@ -55,3 +55,24 @@ H2-backed JPA data model has been added for core microservices.
 	- DTOs: WorkflowExecutionDto, WorkflowStateDto, ApprovalHistoryDto
 
 Repository unit tests are included for these new repositories.
+
+## URL Service API (Current Commit)
+
+Implemented endpoints in url-service:
+
+- POST /api/v1/urls
+- GET /api/v1/urls/{shortCode}
+- PUT /api/v1/urls/{id}
+- DELETE /api/v1/urls/{id}
+- GET /r/{shortCode}
+
+Behavior delivered:
+
+- Random short code generation when alias is not provided.
+- Custom alias support with duplicate alias validation.
+- URL format validation through Jakarta validation constraints.
+- Expiration date validation and expiration enforcement during redirect.
+- Enable or disable URL via update endpoint.
+- Structured exception handling with HTTP-specific status mapping.
+- Swagger/OpenAPI annotations for URL endpoints.
+- Unit tests for service and controller layers.
