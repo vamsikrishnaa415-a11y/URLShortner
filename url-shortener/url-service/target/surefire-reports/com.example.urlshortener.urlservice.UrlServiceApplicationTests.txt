@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.urlshortener.urlservice.UrlServiceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.74 s -- in com.example.urlshortener.urlservice.UrlServiceApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.00 s -- in com.example.urlshortener.urlservice.UrlServiceApplicationTests

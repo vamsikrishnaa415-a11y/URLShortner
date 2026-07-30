@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.000 s -- in com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.642 s -- in com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest
