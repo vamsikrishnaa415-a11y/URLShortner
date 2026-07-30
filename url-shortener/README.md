@@ -76,3 +76,22 @@ Behavior delivered:
 - Structured exception handling with HTTP-specific status mapping.
 - Swagger/OpenAPI annotations for URL endpoints.
 - Unit tests for service and controller layers.
+
+## Analytics Service API (Current Commit)
+
+Implemented endpoints in analytics-service:
+
+- POST /analytics/events
+- GET /analytics/{shortCode}
+- GET /analytics/top
+- GET /analytics/daily
+
+Behavior delivered:
+
+- Stores each redirect event using REST and JPA persistence.
+- Tracks timestamp, ipAddress, browser, device, operatingSystem, and referrer.
+- Provides per-shortCode analytics summary.
+- Provides top short code analytics with limit support.
+- Provides daily aggregated analytics with optional date range filters.
+- Uses mapper and DTO separation for persistence and API contracts.
+- Includes unit tests for service and controller layers.

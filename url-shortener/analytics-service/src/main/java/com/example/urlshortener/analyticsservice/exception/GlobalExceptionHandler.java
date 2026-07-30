@@ -15,7 +15,7 @@ import com.example.urlshortener.analyticsservice.dto.ErrorResponse;
 public class GlobalExceptionHandler {
     @ExceptionHandler(ServiceException.class)
     public ResponseEntity<ErrorResponse> handleServiceException(ServiceException ex, HttpServletRequest request) {
-        return buildErrorResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, request);
+        return buildErrorResponse(ex.getMessage(), ex.getStatus(), request);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest" time="4.378" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest" time="4.856" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -65,9 +65,9 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[analytics-service] "/>
   </properties>
-  <testcase name="shouldSaveAndQueryByShortCode" classname="com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest" time="2.374">
-    <system-out><![CDATA[2026-07-30 11:56:19 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - no-correlation-id - Could not detect default configuration classes for test class [com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest]: ClickAnalyticsRepositoryTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-07-30 11:56:19 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - no-correlation-id - Found @SpringBootConfiguration com.example.urlshortener.analyticsservice.AnalyticsServiceApplication for test class com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest
+  <testcase name="shouldReturnDailyAnalytics" classname="com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest" time="1.902">
+    <system-out><![CDATA[2026-07-30 11:56:14 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - no-correlation-id - Could not detect default configuration classes for test class [com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest]: AnalyticsControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-30 11:56:14 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - no-correlation-id - Found @SpringBootConfiguration com.example.urlshortener.analyticsservice.AnalyticsServiceApplication for test class com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,35 +78,15 @@
 
  :: Spring Boot ::                (v3.3.2)
 
-2026-07-30 11:56:19 [main] INFO  c.e.u.a.r.ClickAnalyticsRepositoryTest - no-correlation-id - Starting ClickAnalyticsRepositoryTest using Java 17.0.19 with PID 10864 (started by abhis in D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service)
-2026-07-30 11:56:19 [main] INFO  c.e.u.a.r.ClickAnalyticsRepositoryTest - no-correlation-id - No active profile set, falling back to 1 default profile: "default"
-2026-07-30 11:56:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-07-30 11:56:19 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - no-correlation-id - Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
-2026-07-30 11:56:20 [main] INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - no-correlation-id - Replacing 'dataSource' DataSource bean with embedded version
-2026-07-30 11:56:20 [main] INFO  o.s.j.d.e.EmbeddedDatabaseFactory - no-correlation-id - Starting embedded database: url='jdbc:h2:mem:677096a8-b1f0-44ed-81c8-d7bd92f3c94d;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
-2026-07-30 11:56:20 [main] INFO  o.h.jpa.internal.util.LogHelper - no-correlation-id - HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-07-30 11:56:20 [main] INFO  o.h.c.i.RegionFactoryInitiator - no-correlation-id - HHH000026: Second-level cache disabled
-2026-07-30 11:56:20 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - no-correlation-id - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-07-30 11:56:20 [main] WARN  org.hibernate.orm.deprecation - no-correlation-id - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-07-30 11:56:20 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - no-correlation-id - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-Hibernate: drop table if exists click_analytics cascade 
-Hibernate: create table click_analytics (clicked_at timestamp(6) with time zone not null, id bigint generated by default as identity, short_code varchar(32) not null, ip_address varchar(45) not null, browser varchar(128) not null, device varchar(128) not null, operating_system varchar(128) not null, referrer varchar(512), primary key (id))
-Hibernate: create index idx_click_analytics_short_code on click_analytics (short_code)
-Hibernate: create index idx_click_analytics_clicked_at on click_analytics (clicked_at)
-Hibernate: create index idx_click_analytics_short_code_clicked_at on click_analytics (short_code, clicked_at)
-2026-07-30 11:56:20 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - no-correlation-id - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-07-30 11:56:21 [main] INFO  c.e.u.a.r.ClickAnalyticsRepositoryTest - no-correlation-id - Started ClickAnalyticsRepositoryTest in 1.74 seconds (process running for 29.059)
-Hibernate: insert into click_analytics (browser,clicked_at,device,ip_address,operating_system,referrer,short_code,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into click_analytics (browser,clicked_at,device,ip_address,operating_system,referrer,short_code,id) values (?,?,?,?,?,?,?,default)
-Hibernate: select ca1_0.id,ca1_0.browser,ca1_0.clicked_at,ca1_0.device,ca1_0.ip_address,ca1_0.operating_system,ca1_0.referrer,ca1_0.short_code from click_analytics ca1_0 where ca1_0.short_code=?
-Hibernate: select count(ca1_0.id) from click_analytics ca1_0 where ca1_0.short_code=?
+2026-07-30 11:56:14 [main] INFO  c.e.u.a.c.AnalyticsControllerTest - no-correlation-id - Starting AnalyticsControllerTest using Java 17.0.19 with PID 10864 (started by abhis in D:\PST PRoject\Vamsi\URLShortner\url-shortener\analytics-service)
+2026-07-30 11:56:14 [main] INFO  c.e.u.a.c.AnalyticsControllerTest - no-correlation-id - No active profile set, falling back to 1 default profile: "default"
+2026-07-30 11:56:16 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - no-correlation-id - Initializing Spring TestDispatcherServlet ''
+2026-07-30 11:56:16 [main] INFO  o.s.t.w.s.TestDispatcherServlet - no-correlation-id - Initializing Servlet ''
+2026-07-30 11:56:16 [main] INFO  o.s.t.w.s.TestDispatcherServlet - no-correlation-id - Completed initialization in 3 ms
+2026-07-30 11:56:16 [main] INFO  c.e.u.a.c.AnalyticsControllerTest - no-correlation-id - Started AnalyticsControllerTest in 2.139 seconds (process running for 24.526)
 ]]></system-out>
   </testcase>
-  <testcase name="shouldQueryByClickedAtRange" classname="com.example.urlshortener.analyticsservice.repository.ClickAnalyticsRepositoryTest" time="0.09">
-    <system-out><![CDATA[Hibernate: insert into click_analytics (browser,clicked_at,device,ip_address,operating_system,referrer,short_code,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into click_analytics (browser,clicked_at,device,ip_address,operating_system,referrer,short_code,id) values (?,?,?,?,?,?,?,default)
-Hibernate: insert into click_analytics (browser,clicked_at,device,ip_address,operating_system,referrer,short_code,id) values (?,?,?,?,?,?,?,default)
-Hibernate: select ca1_0.id,ca1_0.browser,ca1_0.clicked_at,ca1_0.device,ca1_0.ip_address,ca1_0.operating_system,ca1_0.referrer,ca1_0.short_code from click_analytics ca1_0 where ca1_0.clicked_at between ? and ?
-]]></system-out>
-  </testcase>
+  <testcase name="shouldReturnTopAnalytics" classname="com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest" time="0.081"/>
+  <testcase name="shouldStoreRedirectEvent" classname="com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest" time="0.498"/>
+  <testcase name="shouldReturnAnalyticsByShortCode" classname="com.example.urlshortener.analyticsservice.controller.AnalyticsControllerTest" time="0.072"/>
 </testsuite>

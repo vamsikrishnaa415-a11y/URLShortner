@@ -36,3 +36,8 @@ Details are documented in [url-shortener/README.md](url-shortener/README.md).
 
 URL Service CRUD and redirect APIs are implemented in commit `feat: implement url service`.
 See [url-shortener/README.md](url-shortener/README.md) for endpoint and behavior details.
+
+## Analytics Service APIs Milestone
+
+Analytics Service tracking and reporting APIs are implemented in commit `feat: implement analytics service`.
+See [url-shortener/README.md](url-shortener/README.md) for endpoint and behavior details.
