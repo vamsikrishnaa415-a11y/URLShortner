@@ -1,4 +1,5 @@
 com\example\urlshortener\urlservice\repository\ShortUrlRepositoryTest.class
 com\example\urlshortener\urlservice\service\ShortUrlServiceTest.class
 com\example\urlshortener\urlservice\controller\ShortUrlControllerTest.class
+com\example\urlshortener\urlservice\service\AnalyticsTrackingServiceTest.class
 com\example\urlshortener\urlservice\UrlServiceApplicationTests.class
