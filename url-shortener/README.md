@@ -1,97 +1,68 @@
-# URL Shortener microservices
+# URL Shortener Microservices
 
-This module contains four Spring Boot services that work together as a small microservice landscape.
+This folder contains a multi-module Spring Boot platform with four services.
 
-## Services
+## Modules
 
-- api-gateway: receives external traffic and routes requests to internal services.
-- url-service: stores and resolves short URLs.
-- analytics-service: tracks access metrics and usage patterns.
-- orchestrator-service: coordinates workflows across the other services.
+- api-gateway (port 8080): ingress and shared operational endpoints.
+- url-service (port 8081): URL create/read/update/delete and redirect.
+- analytics-service (port 8082): redirect event storage and analytics queries.
+- orchestrator-service (port 8083): agentic workflow orchestration.
 
-## Structure
+## Tech stack
 
-- api-gateway/
-- url-service/
-- analytics-service/
-- orchestrator-service/
+- Java 17
+- Spring Boot 3.3.2
+- Spring Data JPA + H2
+- Springdoc OpenAPI
+- OpenFeign + Resilience4j (url-service to analytics-service)
 
-Each service contains a standard Spring Boot layout with config, controller, service, repository, entity, dto, mapper, exception, validation, util, and common packages.
+## API highlights
 
-## Run each module
+- URL Service
+	- POST /api/v1/urls
+	- GET /api/v1/urls/{shortCode}
+	- PUT /api/v1/urls/{id}
+	- DELETE /api/v1/urls/{id}
+	- GET /r/{shortCode}
+- Analytics Service
+	- POST /analytics/events
+	- GET /analytics/{shortCode}
+	- GET /analytics/top
+	- GET /analytics/daily
+- Orchestrator Service
+	- POST /workflow/start
+	- GET /workflow/{id}
+	- POST /workflow/{id}/approve
+	- POST /workflow/{id}/retry
+	- POST /workflow/{id}/rollback
 
-From the project root run:
+## Build and run
 
-- mvn -pl api-gateway spring-boot:run
-- mvn -pl url-service spring-boot:run
-- mvn -pl analytics-service spring-boot:run
-- mvn -pl orchestrator-service spring-boot:run
+From this folder:
 
-## Run the full project
+- Build all modules
+	- mvn clean verify
+- Run one module
+	- mvn -pl url-service spring-boot:run
+	- mvn -pl analytics-service spring-boot:run
+	- mvn -pl orchestrator-service spring-boot:run
+	- mvn -pl api-gateway spring-boot:run
 
-From url-shortener/ run:
+## Health and OpenAPI
 
-- mvn spring-boot:run -pl api-gateway
+- Health: /internal/health
+- OpenAPI JSON: /v3/api-docs
+- Swagger UI: /swagger-ui.html
 
-Each service exposes a health endpoint at /internal/health and Swagger UI at /swagger-ui.html.
+## Engineering deliverables
 
-## Database Model (Commit 7)
+Final production-readiness artifacts are in [docs/README.md](docs/README.md):
 
-H2-backed JPA data model has been added for core microservices.
-
-- url-service
-	- Entity: ShortUrl (id, originalUrl, shortCode, customAlias, createdAt, expiryDate, active, clickCount)
-	- Repository: ShortUrlRepository
-	- DTOs: ShortUrlRequestDto, ShortUrlResponseDto
-
-- analytics-service
-	- Entity: ClickAnalytics (id, shortCode, clickedAt, ipAddress, browser, device, operatingSystem, referrer)
-	- Repository: ClickAnalyticsRepository
-	- DTOs: ClickAnalyticsRequestDto, ClickAnalyticsResponseDto
-
-- orchestrator-service
-	- Entities: WorkflowExecution, WorkflowState, ApprovalHistory
-	- Repositories: WorkflowExecutionRepository, WorkflowStateRepository, ApprovalHistoryRepository
-	- DTOs: WorkflowExecutionDto, WorkflowStateDto, ApprovalHistoryDto
-
-Repository unit tests are included for these new repositories.
-
-## URL Service API (Current Commit)
-
-Implemented endpoints in url-service:
-
-- POST /api/v1/urls
-- GET /api/v1/urls/{shortCode}
-- PUT /api/v1/urls/{id}
-- DELETE /api/v1/urls/{id}
-- GET /r/{shortCode}
-
-Behavior delivered:
-
-- Random short code generation when alias is not provided.
-- Custom alias support with duplicate alias validation.
-- URL format validation through Jakarta validation constraints.
-- Expiration date validation and expiration enforcement during redirect.
-- Enable or disable URL via update endpoint.
-- Structured exception handling with HTTP-specific status mapping.
-- Swagger/OpenAPI annotations for URL endpoints.
-- Unit tests for service and controller layers.
-
-## Analytics Service API (Current Commit)
-
-Implemented endpoints in analytics-service:
-
-- POST /analytics/events
-- GET /analytics/{shortCode}
-- GET /analytics/top
-- GET /analytics/daily
-
-Behavior delivered:
-
-- Stores each redirect event using REST and JPA persistence.
-- Tracks timestamp, ipAddress, browser, device, operatingSystem, and referrer.
-- Provides per-shortCode analytics summary.
-- Provides top short code analytics with limit support.
-- Provides daily aggregated analytics with optional date range filters.
-- Uses mapper and DTO separation for persistence and API contracts.
-- Includes unit tests for service and controller layers.
+- API documentation
+- architecture diagrams
+- setup and testing guides
+- trade-off and risk analysis
+- security review
+- limitations
+- final engineering summary

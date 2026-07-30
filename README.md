@@ -1,43 +1,29 @@
 # URL Shortener Platform
 
-Production-grade URL Shortener platform built with Java 21, Spring Boot 3, PostgreSQL, Redis, Kafka, and an agentic engineering workflow.
+Multi-module Spring Boot platform for URL shortening, redirect analytics, and agentic SDLC orchestration.
 
-## Delivery Workflow
+## Quick links
 
-This repository is being delivered in controlled engineering milestones. Each approved phase corresponds to one Git commit.
+- Project implementation: [url-shortener/README.md](url-shortener/README.md)
+- Final engineering docs index: [url-shortener/docs/README.md](url-shortener/docs/README.md)
 
-1. Phase 1: Requirement Understanding (current)
-2. Phase 2: Business Requirement Document (BRD)
-3. Phase 3: Functional Requirement Document (FRD)
-4. Phase 4: Architecture Design
-5. Phase 5: Agentic Orchestration Design
-6. Phase 6: Project Bootstrap
-7. Phase 7: Database Design
-8. Phase 8: REST API Design
-9. Phase 9: Implementation
-10. Phase 10: Testing
-11. Phase 11: Documentation
-12. Phase 12: Deployment
-13. Phase 13: Final Engineering Summary
+## Stack snapshot
 
-## Phase Artifacts
+- Java 17
+- Spring Boot 3.3.2
+- Spring Cloud OpenFeign + Resilience4j (url-service integration)
+- Spring Data JPA
+- H2 in-memory databases per service
 
-- Phase 1: [docs/phase-01-requirement-understanding.md](docs/phase-01-requirement-understanding.md)
-## URL Shortener bootstrap
+## Services
 
-See [url-shortener/README.md](url-shortener/README.md) for the multi-module Maven bootstrap and service overview.
+- api-gateway
+- url-service
+- analytics-service
+- orchestrator-service
 
-## Database Entities Milestone
+## Current status
 
-Commit 7 adds the H2-backed JPA database model for URL Service, Analytics Service, and Orchestrator Service.
-Details are documented in [url-shortener/README.md](url-shortener/README.md).
-
-## URL Service APIs Milestone
-
-URL Service CRUD and redirect APIs are implemented in commit `feat: implement url service`.
-See [url-shortener/README.md](url-shortener/README.md) for endpoint and behavior details.
-
-## Analytics Service APIs Milestone
-
-Analytics Service tracking and reporting APIs are implemented in commit `feat: implement analytics service`.
-See [url-shortener/README.md](url-shortener/README.md) for endpoint and behavior details.
+- Core APIs implemented for URL management, redirect analytics, and workflow orchestration.
+- Unit and slice tests are green across all modules.
+- Production readiness review and final architecture documentation are available in [url-shortener/docs/README.md](url-shortener/docs/README.md).
